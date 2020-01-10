@@ -4,32 +4,38 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.codinginflow.batman.R;
 
-public class GlideTools {
+import java.util.ArrayList;
+import java.util.List;
 
-    private static GlideTools glide_tools_instance = null;
+public class SplitterTools {
+
+    private static SplitterTools splitter_tools_instance = null;
 
     // static method to create instance of Singleton class
-    public static GlideTools getInstance()
+    public static SplitterTools getInstance()
     {
-        if (glide_tools_instance == null)
-            glide_tools_instance = new GlideTools();
+        if (splitter_tools_instance == null)
+            splitter_tools_instance = new SplitterTools();
 
-        return glide_tools_instance;
+        return splitter_tools_instance;
     }
 
-    public void displayImageOriginal(Context ctx, ImageView img, String url) {
-        try {
-            RequestOptions options = new RequestOptions()
-                    .placeholder(R.drawable.ic_load_pic);
-            Glide.with(ctx).load(url)
-                    .apply(options)
-                    .into(img);
-        } catch (Exception e) {
-            HandelErrorTools.getInstance().setHandelError(ctx,e);
-        }
+    public List<String> splitterStringList(String messageText) {
+        List<String> splitterList = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < messageText.length(); i++)
+            if (!(messageText.charAt(i) == ',')) {
+                sb.append(messageText.charAt(i));
+            } else {
+                if (!sb.toString().isEmpty())
+                    splitterList.add(0, sb.toString().trim());
+                sb.delete(0, sb.length());
+            }
+        if (!sb.toString().isEmpty())
+            splitterList.add(0, sb.toString().trim());
+        return splitterList;
     }
 }

@@ -1,22 +1,39 @@
 package com.codinginflow.batman.utils;
 
 import android.content.Context;
-import android.widget.Toast;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
-public class HandelErrorTools {
+import com.codinginflow.batman.R;
 
-    private static HandelErrorTools handel_error_tools_instance = null;
+import java.util.Objects;
+
+import retrofit2.HttpException;
+
+public class ThrowableTools {
+
+    private static ThrowableTools throwable_error_tools_instance = null;
 
     // static method to create instance of Singleton class
-    public static HandelErrorTools getInstance()
-    {
-        if (handel_error_tools_instance == null)
-            handel_error_tools_instance = new HandelErrorTools();
-
-        return handel_error_tools_instance;
+    public static ThrowableTools getInstance() {
+        if (throwable_error_tools_instance == null)
+            throwable_error_tools_instance = new ThrowableTools();
+        return throwable_error_tools_instance;
     }
 
-    public void setHandelError(Context context,Exception e) {
-        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+    public String getThrowableError(Throwable error) {
+        if (NetworkTools.getInstance().isNetworkAvailable()) {
+            return App.context.getString(R.string.no_connection);
+        } else if (error instanceof HttpException) {
+            int code = ((HttpException) error).code();
+            if (code == 401) {
+                return App.context.getString(R.string.unauthorized);
+            } else if (code >= 400 && code < 500) {
+                return App.context.getString(R.string.bad_request);
+            } else if (code >= 500 && code < 600) {
+                return App.context.getString(R.string.server_error);
+            }
+        }
+        return App.context.getString(R.string.unknown_error);
     }
 }

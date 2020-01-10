@@ -1,4 +1,4 @@
-package com.codinginflow.batman.adapter;
+package com.codinginflow.batman.adapter.movie_list;
 
 import android.view.View;
 import android.widget.ImageView;

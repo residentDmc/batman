@@ -1,4 +1,4 @@
-package com.codinginflow.batman.adapter.genre_list;
+package com.codinginflow.batman.adapter.rating_list;
 
 import android.view.View;
 import android.widget.TextView;
@@ -8,11 +8,13 @@ import com.codinginflow.batman.R;
 import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.annotations.NonNull;
 
-class ViewHolderGenre extends RecyclerView.ViewHolder {
-        TextView txtGenre;
+class ViewHolderRating extends RecyclerView.ViewHolder {
+        TextView txtRatingTitle;
+        TextView txtRatingValue;
 
-        ViewHolderGenre(@NonNull View itemView) {
+        ViewHolderRating(@NonNull View itemView) {
             super(itemView);
-            txtGenre= itemView.findViewById(R.id.txt_genre);
+            txtRatingTitle= itemView.findViewById(R.id.txt_rating_title);
+            txtRatingValue= itemView.findViewById(R.id.txt_rating_value);
         }
     }

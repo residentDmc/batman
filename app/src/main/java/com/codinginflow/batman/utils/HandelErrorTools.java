@@ -1,31 +1,22 @@
 package com.codinginflow.batman.utils;
 
 import android.content.Context;
-import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+public class HandelErrorTools {
 
-public class GlideTools {
-
-    private static GlideTools glide_tools_instance = null;
+    private static HandelErrorTools handel_error_tools_instance = null;
 
     // static method to create instance of Singleton class
-    public static GlideTools getInstance()
+    public static HandelErrorTools getInstance()
     {
-        if (glide_tools_instance == null)
-            glide_tools_instance = new GlideTools();
+        if (handel_error_tools_instance == null)
+            handel_error_tools_instance = new HandelErrorTools();
 
-        return glide_tools_instance;
+        return handel_error_tools_instance;
     }
 
-    public void displayImageOriginal(Context ctx, ImageView img, String url) {
-        try {
-            Glide.with(ctx).load(url)
-                    .crossFade()
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .into(img);
-        } catch (Exception e) {
-        }
+    public void setHandelError(Exception e) {
+        Toast.makeText(App.context, e.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }

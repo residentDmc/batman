@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.codinginflow.batman.R;
-import com.codinginflow.batman.model.remote_data_source.model.model_movie_detail.Rating;
+import com.codinginflow.batman.model.model.model_movie_detail.Rating;
 
 import java.util.ArrayList;
 import java.util.List;

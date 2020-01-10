@@ -1,10 +1,17 @@
-package com.codinginflow.batman.model.remote_data_source.model.model_movie_list;
+package com.codinginflow.batman.model.model.model_movie_list;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MovieList extends ItemResponse{
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "movie_table")
+public class Movie {
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     @SerializedName("Title")
     @Expose
     private String title;
@@ -12,6 +19,7 @@ public class MovieList extends ItemResponse{
     @Expose
     private String year;
     @SerializedName("imdbID")
+    @ColumnInfo(name = "imdb_id")
     @Expose
     private String imdbID;
     @SerializedName("Type")
@@ -20,6 +28,22 @@ public class MovieList extends ItemResponse{
     @SerializedName("Poster")
     @Expose
     private String poster;
+
+    public Movie(String title, String year, String imdbID, String type, String poster) {
+        this.title = title;
+        this.year = year;
+        this.imdbID = imdbID;
+        this.type = type;
+        this.poster = poster;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

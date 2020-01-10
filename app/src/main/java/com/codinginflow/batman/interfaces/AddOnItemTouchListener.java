@@ -1,4 +1,6 @@
 package com.codinginflow.batman.interfaces;
 
-public class AddOnItemTouchListener {
+public interface AddOnItemTouchListener {
+
+    void onItemTouchListener(Object object);
 }

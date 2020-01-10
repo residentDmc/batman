@@ -2,25 +2,24 @@ package com.codinginflow.batman.view_model;
 
 import android.app.Application;
 
-import com.codinginflow.batman.model.repository.Repository;
+import com.codinginflow.batman.model.repository.MovieDetailRepository;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import static com.codinginflow.batman.utils.AppConstants.API_KEY;
-import static com.codinginflow.batman.utils.AppConstants.MOVIE_LIST;
 
-public class DetailMovieViewModel extends AndroidViewModel {
+public class MovieDetailViewModel extends AndroidViewModel {
 
-    private final Repository articleRepository;
+    private final MovieDetailRepository movieDetailRepository;
 
-    public DetailMovieViewModel(@NonNull Application application) {
+    public MovieDetailViewModel(@NonNull Application application) {
         super(application);
-        articleRepository = new Repository();
+        movieDetailRepository = new MovieDetailRepository();
     }
 
-    public LiveData<Object> getMovieListResponseLiveData() {
-        return articleRepository.getMovieListArticles(API_KEY, MOVIE_LIST);
+    public LiveData<Object> getMovieDetailResponseLiveData(String itemId) {
+        return movieDetailRepository.getMovieDetailArticles(API_KEY, itemId);
     }
 }

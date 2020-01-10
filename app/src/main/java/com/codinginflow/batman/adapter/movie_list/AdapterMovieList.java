@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.codinginflow.batman.R;
 import com.codinginflow.batman.interfaces.AddOnItemTouchListener;
-import com.codinginflow.batman.model.remote_data_source.model.model_movie_list.Movie;
+import com.codinginflow.batman.model.model.model_movie_list.Movie;
 import com.codinginflow.batman.utils.GlideTools;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class AdapterMovieList extends RecyclerView.Adapter<ViewHolderMovieList> 
     public void onBindViewHolder(@NonNull ViewHolderMovieList viewHolder, int i) {
         Movie movie = movieList.get(i);
         viewHolder.txtTitle.setText(String.format("%s %s", movie.getTitle(), movie.getYear()));
-        GlideTools.getInstance().displayImageOriginal(context,viewHolder.imgPoster,movie.getPoster());
+        GlideTools.getInstance().displayImageOriginal(viewHolder.imgPoster,movie.getPoster());
         viewHolder.vItemParent.setOnClickListener(v -> addOnItemTouchListener.onItemTouchListener(movie.getImdbID()));
     }
 
