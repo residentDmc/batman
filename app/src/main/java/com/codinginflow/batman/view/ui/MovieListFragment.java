@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.codinginflow.batman.R;
 import com.codinginflow.batman.adapter.movie_list.AdapterMovieList;
@@ -25,11 +26,13 @@ import java.util.Objects;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -63,6 +66,8 @@ public class MovieListFragment extends Fragment {
             initView(view);
             initAdapter();
             getMovieList();
+
+
         } catch (Exception e) {
             HandelErrorTools.getInstance().setHandelError(e);
         }
@@ -101,7 +106,6 @@ public class MovieListFragment extends Fragment {
 
         MovieListViewModel movieListViewModel = ViewModelProviders.of(this).get(MovieListViewModel.class);
         movieListViewModel.getMovieListResponseLiveData().observe(this, this::onChanged);
-
     }
 
     private void onChanged(Object obj) {

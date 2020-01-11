@@ -1,13 +1,15 @@
 package com.codinginflow.batman.model.model.model_movie_list;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "movie_table")
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import static com.codinginflow.batman.utils.AppConstants.MOVIE_TABLE;
+
+@Entity(tableName = MOVIE_TABLE)
 public class Movie {
 
     @PrimaryKey(autoGenerate = true)

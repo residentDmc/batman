@@ -1,12 +1,24 @@
 package com.codinginflow.batman.model.model.model_movie_detail;
 
-import java.util.List;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
+import com.codinginflow.batman.utils.ListRatingTypeConverter;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
+import static com.codinginflow.batman.utils.AppConstants.MOVIE_DETAIL_TABLE;
+
+@Entity(tableName = MOVIE_DETAIL_TABLE, indices = @Index(value = {"imdb_id"}, unique = true))
 public class MovieDetail {
 
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     @SerializedName("Title")
     @Expose
     private String title;
@@ -50,6 +62,7 @@ public class MovieDetail {
     @Expose
     private String poster;
     @SerializedName("Ratings")
+    @TypeConverters(ListRatingTypeConverter.class)
     @Expose
     private List<Rating> ratings = null;
     @SerializedName("Metascore")
@@ -62,6 +75,7 @@ public class MovieDetail {
     @Expose
     private String imdbVotes;
     @SerializedName("imdbID")
+    @ColumnInfo(name = "imdb_id")
     @Expose
     private String imdbID;
     @SerializedName("Type")
@@ -287,5 +301,12 @@ public class MovieDetail {
         this.response = response;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
 

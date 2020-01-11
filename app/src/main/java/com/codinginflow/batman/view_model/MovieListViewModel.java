@@ -2,6 +2,7 @@ package com.codinginflow.batman.view_model;
 
 import android.app.Application;
 
+import com.codinginflow.batman.model.model.model_movie_list.Movie;
 import com.codinginflow.batman.model.repository.MovieListRepository;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,8 @@ public class MovieListViewModel extends AndroidViewModel {
     public MovieListViewModel(@NonNull Application application) {
         super(application);
         articleMovieListRepository = new MovieListRepository();
+
+
     }
 
     public LiveData<Object> getMovieListResponseLiveData() {

@@ -18,4 +18,13 @@ public class AppConstants {
     public static final String ERROR_BUNDLE = "error";
     public static final String ITEM_ID_BUNDLE = "item_id";
 
+    // table
+    public static final String MOVIE_TABLE = "movie_table";
+    public static final String MOVIE_DETAIL_TABLE = "movie_detail_table";
+    public static final String MOVIE_DETAIL_RATING_TABLE = "movie_detail_rating_table";
+
+
+    // database
+    public static final String MOVIE = "movie_database";
+
 }
