@@ -106,7 +106,7 @@ public class MovieDetail {
     }
 
     public String getYear() {
-        return "(" + year + ")";
+        return year;
     }
 
     public String getTitleAndYear() {
